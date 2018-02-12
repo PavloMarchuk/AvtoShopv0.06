@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AvtoShop.DataLayer.DbLayer.Photo>
+
+@{
+    ViewData["Title"] = "AddPhotos";
+}
+
+<h2>AddPhotos</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhotoPath)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Avto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+			<td>
+				<img src="~/photos/Audi_A1.jpg" width="192" height="108" />
+				
+				@*@Html.DisplayFor(modelItem => item.PhotoPath)*@
+			</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Avto.Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PhotoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PhotoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PhotoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
